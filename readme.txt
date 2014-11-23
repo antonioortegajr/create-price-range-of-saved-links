@@ -13,3 +13,8 @@ This then passes the API key, and link info to post-saved-links.php
 which creates several saved links using the existing fields, but adding/editing a price range.
 For simplicity I am just going to pass these via url string.
 I don't really recommend passing API keys this way however.
+
+
+Saved links are created via API PUT method. Links are built from a already existing saved link
+The first newly built saved link will have a price range of 100000 to 200000 and the next
+link will be 200000 to 300000 and so on until 500000 is reached.

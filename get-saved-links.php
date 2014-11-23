@@ -1,15 +1,3 @@
-<html>
-<head>
-	<link href="style.css" rel="stylesheet" type="text/css">
-	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-	</head>
-	<body>
-		<center><div id="branding">
-			<a href="http://idxbroker.com" id="idx_logo"><img src="http://www.idxbroker.com/images/brands/idx.png"></a><img src="http://antoniowp.idxsandbox.com/api/images/devs.png">
-		</div>
-		<br>
-		<br>
-		<div id="green"></div>
 		<h1>Create a price range of Saved links</h1>
 		<p>Choose a saved link below to create a price range of saved link</p>
 		<p>The output will be the saved link with hp and lp ranges set to:<br>
@@ -73,11 +61,3 @@
 		}
 
 		?>
-
-		<br><br>
-		<div id="plats">
-			<img src="http://antoniowp.idxsandbox.com/SEO/images/lt(150)_300.png"><img src="http://antoniowp.idxsandbox.com/SEO/images/pt(150)_300.png">
-		</div>
-	</center>
-</body>
-</html>

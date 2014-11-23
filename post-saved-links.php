@@ -1,111 +1,120 @@
-<html>
-<head>
-  <link href="style.css" rel="stylesheet" type="text/css">
-  <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-  </head>
-  <body>
-    <center><div id="branding">
-      <a href="http://idxbroker.com" id="idx_logo"><img src="http://www.idxbroker.com/images/brands/idx.png"></a><img src="http://antoniowp.idxsandbox.com/api/images/devs.png">
-    </div>
-    <br>
-    <br>
-    <div id="green"></div>
 
-    <h1>Saved links with range of prices</h1>
-    <?php
+<h1>Saved links with range of prices</h1>
 
-    //default variables from url string and default prices
+<?php
 
-    $llave = $_GET["key"];
-    $save_link_id = $_GET["uid"];
+//default variables from url string and default prices
 
-    //change the dashes back to amps
-    $saved_link_base_string = str_replace("-", "&", $_GET["qs"]);
+$llave = $_GET["key"];
+$save_link_id = $_GET["uid"];
 
-    $default_lp= '0';
-    $default_hp ='100000';
-    $linkName = $_GET["ln"];
-    $pageTitle = '';
-    $linkTitle = '';
-    $hp = 100000;
-    $lp = 0;
+//change the dashes back to amps
+$saved_link_base_string = str_replace("-", "&", $_GET["qs"]);
+
+$default_lp= '0';
+$default_hp ='100000';
+$linkName = $_GET["ln"];
+$pageTitle = '';
+$linkTitle = '';
+$price = 100000;
 
 
-    echo 'key = ' . $llave . '<br>saved link ID = ' . $save_link_id . '<br>url string = ' . $saved_link_base_string
-    . '<br>link name = ' . $linkName;
-
-    //loop for priceranges begins here.. when I write it.
+echo 'key = ' . $llave . '<br>saved link ID = ' . $save_link_id . '<br>url string = ' . $saved_link_base_string
+. '<br>link name = ' . $linkName;
 
 
-    if ($hp == 500000){
+// use wildcard to remove any &hp=*&  or &lp=*& values inside the existing url string variable
 
-      //kill loop
+$saved_link_base_string = preg_replace('/&hp=.*?&/', '&', $saved_link_base_string);
 
+$saved_link_base_string = preg_replace('/&lp=.*?&/', '&', $saved_link_base_string);
 
-    }
+// remove any &hp= or &lp= at the shoudld they be at the end of the string
 
-    else {
+$saved_link_base_string = preg_replace('/&hp=.*/', '', $saved_link_base_string);
+
+$saved_link_base_string = preg_replace('/&lp=.*/', '', $saved_link_base_string);
+
+// change all & and = to , and => for passing as an array in the API call also
+//  start using " so I can add ' to the query string array
+
+$values = $saved_link_base_string = preg_replace("/&/", "','", $saved_link_base_string);
+$values = $saved_link_base_string = preg_replace("/=/", "'=>'", $saved_link_base_string);
 
 
 
-      $hp = $hp + 100000;
-      $lp = $lp + 100000;
+//new string with no hp or lp values
+echo '<br>new string: ' . $saved_link_base_string;
 
 
-      // access URL and request method
-      $url = 'https://api.idxbroker.com/clients/savedlinks';
-      $data = array(
-      'linkName'=>'$linkName', // the link's url
-      'pageTitle'=>'$pageTitle', // the title tag
-      'linkTitle'=>'$linkTitle', // how the link displays
-      'queryString'=>array($queryString)
-      );
-      $data = http_build_query($data); // encode and & delineate
-      $method = 'PUT';
 
-      // headers (required and optional)
-      $headers = array(
-      'Content-Type: application/x-www-form-urlencoded', // required
-      'accesskey: ' . $llave, // required - replace with your own
-      'outputtype: json' // optional - overrides the preferences in our API control page
-      );
-
-      // set up cURL
-      $handle = curl_init();
-      curl_setopt($handle, CURLOPT_URL, $url);
-      curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
-      curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
-      curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
-
-      if ($method != 'GET')
-      curl_setopt($handle, CURLOPT_CUSTOMREQUEST, $method);
-
-      // send the data
-      curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
-
-      // exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
-      $response = curl_exec($handle);
-      $code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-
-      if ($code >= 200 || $code < 300)
-      $response = json_decode(response,true);
-      else
-      $error = $code;
+while ($price < 500000){
 
 
-      //echo http code so I know what is going on
-      echo '<br>http code: ' . $code . '<br><br>';
-    }
+  $lp = "','lp'=>'" . $price . "',";
+
+  $price = $price + 100000;
+
+  $hp = "'hp'=>'" . $price . "'";
 
 
-    ?>
+
+  $q_string = "'" . $saved_link_base_string . $lp . $hp;
+
+  $price_100k_less = $price - 100000;
 
 
-    <br><br>
-    <div id="plats">
-      <img src="http://antoniowp.idxsandbox.com/SEO/images/lt(150)_300.png"><img src="http://antoniowp.idxsandbox.com/SEO/images/pt(150)_300.png">
-    </div>
-  </center>
-</body>
-</html>
+  // access URL and request method
+  $url = 'https://api.idxbroker.com/clients/savedlinks';
+  $data = array(
+  'linkName'=>'$linkName' . $price_100k_less . 'to' . $price, // the link's url
+  'pageTitle'=>'$linkName' . $price_100k_less . 'to' . $price, // the title tag
+  'linkTitle'=>'$linkName' . $price_100k_less . 'to' . $price, // how the link displays
+  'queryString'=>array($q_string)
+  );
+  $data = http_build_query($data); // encode and & delineate
+  $method = 'PUT';
+
+  // headers (required and optional)
+  $headers = array(
+  'Content-Type: application/x-www-form-urlencoded', // required
+  'accesskey: ' . $llave, // required - replace with your own
+  'outputtype: json' // optional - overrides the preferences in our API control page
+  );
+
+  // set up cURL
+  $handle = curl_init();
+  curl_setopt($handle, CURLOPT_URL, $url);
+  curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+  curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+  curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+  if ($method != 'GET')
+  curl_setopt($handle, CURLOPT_CUSTOMREQUEST, $method);
+
+  // send the data
+  curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
+
+  // exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+  $response = curl_exec($handle);
+  $code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+  if ($code >= 200 || $code < 300)
+  $response = json_decode(response,true);
+  else
+  $error = $code;
+
+
+
+  echo '<br><br>' . $code . ' If 200 returned the link ' . $linkName . $price_100k_less . 'to' . $price . ' was added<br>';
+
+
+
+
+}
+
+
+
+
+?>
