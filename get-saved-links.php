@@ -9,8 +9,8 @@
 		<?php
 
 		//Set API key as llave(spanish for key)
-		//  $llave = 'yourkeyhere';
-		$llave = 'nb3aPvidEaSFgt6ncJHtGw';
+		 $llave = 'yourkeyhere';
+
 
 		//Get current saved links in account
 
