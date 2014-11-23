@@ -1,0 +1,25 @@
+<!-- Style Sheet -->
+
+#header {
+  height: 120px;
+  text-align: inherit;
+  position: relative;
+  height: 140px;
+  width: 100%;
+  background: #222222;
+  text-align: center;
+  color: ffffff;
+  padding: 30,0,0,0;
+}
+
+
+#plats img {width:10%;}
+
+body {width:80%; margin-left:10%; margin-right:10%; margin-bottom:10%;}
+
+#green {
+  background: none repeat scroll 0% 0% #8CC645; height:15px;
+}
+
+#branding {display:inline-block;
+}
