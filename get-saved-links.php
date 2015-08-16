@@ -53,7 +53,7 @@
 			$qs_string = $sl["queryString"];
 
 			echo 'Link Name: ' . $sl["linkName"] . '<br>Link Query: ' . $sl["queryString"]
-			. '<br>UID: ' . $sl["uid"] . '<br><a href="post_saved_links.php?ln=' . $sl["linkName"] . '&qs=' . str_replace("&", "-", $qs_string) .
+			. '<br>UID: ' . $sl["uid"] . '<br><a href="post-saved-links.php?ln=' . $sl["linkName"] . '&qs=' . str_replace("&", "-", $qs_string) .
 			'&uid=' . $sl["uid"] . '&key=' . $llave . '" target="_blank">Create price range links from this link</a>' . '<br><hr><br>';
 
 
