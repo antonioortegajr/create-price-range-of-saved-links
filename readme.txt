@@ -1,4 +1,4 @@
-<!-- Read Me File -->
+READ ME
 
 This code is for demonstration purposes. It does use the IDX Broker API,
 but IS NOT supported by IDX Broker in any way.
