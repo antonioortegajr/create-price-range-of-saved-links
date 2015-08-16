@@ -39,6 +39,8 @@
 
     $values = $saved_link_base_string = preg_replace("/&/", "','", $saved_link_base_string);
     $values = $saved_link_base_string = preg_replace("/=/", "'=>'", $saved_link_base_string);
+    //find + and replacewith empty space to handle encoding quick in the IDX Broker API
+    $values = $saved_link_base_string = preg_replace("/+/", " ", $saved_link_base_string);
 
 
 
