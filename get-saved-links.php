@@ -49,11 +49,11 @@
 		//loop through the saved links and create a link that passes the saved link info via url string
 		foreach($response as $sl){
 
-			//tossed this variable in to change the amps to dashes before it's sent via url to the next script
+			//remeber to change the amps to underscores before it's sent via url to the next script
 			$qs_string = $sl["queryString"];
 
 			echo 'Link Name: ' . $sl["linkName"] . '<br>Link Query: ' . $sl["queryString"]
-			. '<br>UID: ' . $sl["uid"] . '<br><a href="post-saved-links.php?ln=' . $sl["linkName"] . '&qs=' . str_replace("&", "-", $qs_string) .
+			. '<br>UID: ' . $sl["uid"] . '<br><a href="post-saved-links.php?ln=' . $sl["linkName"] . '&qs=' . str_replace("&", "_", $qs_string) .
 			'&uid=' . $sl["uid"] . '&key=' . $llave . '" target="_blank">Create price range links from this link</a>' . '<br><hr><br>';
 
 
