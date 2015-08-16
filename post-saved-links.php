@@ -7,8 +7,8 @@
     $llave = $_GET["key"];
     $save_link_id = $_GET["uid"];
 
-    //change the dashes back to amps
-    $saved_link_base_string = str_replace("-", "&", $_GET["qs"]);
+    //change the undersorces back to amps
+    $saved_link_base_string = str_replace("_", "&", $_GET["qs"]);
 
     $default_lp= '0';
     $default_hp ='100000';
