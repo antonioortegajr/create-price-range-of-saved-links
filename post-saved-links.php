@@ -80,7 +80,8 @@ $method = 'PUT';
 $headers = array(
 'Content-Type: application/x-www-form-urlencoded', // required
 'accesskey: ' . $llave, // required - replace with your own
-'outputtype: json' // optional - overrides the preferences in our API control page
+'outputtype: json',
+'apiversion: 1.1.1'// optional - overrides the preferences in our API control page
 );
 
 // set up cURL
