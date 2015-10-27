@@ -5,7 +5,7 @@ but IS NOT supported by IDX Broker in any way.
 
 DO NOT contact IDX Broker regarding this code.
 
-IDX Broker API documentation located at: http://middleware.idxbroker.com/docs/api/1.0.4/clients.php#savedlinks
+IDX Broker API documentation located at: http://middleware.idxbroker.com/docs/api/1.1/clients.php
 
 
 This script is few simple files. One does a GET API (version 1.1 ONLY) call to collect the saved links.
