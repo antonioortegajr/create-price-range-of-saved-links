@@ -7,13 +7,12 @@ DO NOT contact IDX Broker regarding this code.
 
 IDX Broker API documentation located at: http://middleware.idxbroker.com/docs/api/1.0.4/clients.php#savedlinks
 
-<<<<<<< HEAD
+
 This script is few simple files. One does a GET API (version 1.1 ONLY) call to collect the saved links.
-=======
-At this time polygon saved links are sort of by this repo.
+
 
 This script is two simple files. One does a GET API (version 1.1.1 ONLY) call to collect the saved links.
->>>>>>> origin/master
+
 This is get-saved-links.php and will use one API call on each load.
 This then passes the API key, and link info to post-saved-links.php
 which creates several saved links using the existing fields, but adding/editing a price range.
