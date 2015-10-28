@@ -7,10 +7,6 @@ DO NOT contact IDX Broker regarding this code.
 
 IDX Broker API documentation located at: http://middleware.idxbroker.com/docs/api/1.1/clients.php
 
-
-This script is few simple files. One does a GET API (version 1.1 ONLY) call to collect the saved links.
-
-
 This script is two simple files. One does a GET API (version 1.1.1 ONLY) call to collect the saved links.
 
 This is get-saved-links.php and will use one API call on each load.
