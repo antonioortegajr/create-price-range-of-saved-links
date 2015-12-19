@@ -14,7 +14,7 @@
 		<?php
 
 		//Set API key as llave(spanish for key!)
-		// $llave = 'nb3aPvidEaSFgt6ncJHtGw';
+		// $llave = 'YourKeyHere';
 		$llave = $_POST["llave"];
 
                 if ($llave != NULL){
